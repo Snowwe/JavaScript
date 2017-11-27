@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exem Novitskaya</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script>
+        function showError(container, errorMessage) {
+            container.className = 'error';
+            var msgElem = document.createElement('span');
+            msgElem.className = "error-message";
+            msgElem.innerHTML = errorMessage;
+            container.appendChild(msgElem);
+        }
+
+        function resetError(container) {
+            container.className = "";
+            if (container.lastChild.className == "error-message") {
+                container.removeChild(container.lastChild);
+            }
+        }
+
+        function validate(form) {
+            var elems = form.elements;
+            var abc = new RegExp("^[а-яА-ЯёЁa-zA-Z]{2}$");
+            var numb = new RegExp('^[0-9]{7}$');
+            var passp1 = elems.pass1.value;
+            var passp2 = elems.pass2.value;
+            var blank = elems.blank.value;
+            var lang = elems.lang.value;
+
+            resetError(elems.pass1.parentNode);
+            if (!passp1 || !abc.test(passp1)) {
+                showError(elems.pass1.parentNode, "могут вводится только две буквы");
+            }
+            resetError(elems.pass2.parentNode);
+            if (!passp2 || !numb.test(passp2)) {
+                showError(elems.pass2.parentNode, "могут вводится только 7 цифр");
+            }
+
+            resetError(elems.blank.parentNode);
+            if (!blank || !numb.test(blank)) {
+                showError(elems.blank.parentNode, "могут вводится только 7 цифр");
+            }
+
+            resetError(elems.lang.parentNode);
+            if (!lang) {
+                showError(elems.lang.parentNode, "выберите предмет");
+            }
+        }
+    </script>
+    <h3>Task 4</h3>
+    <p>С помощью javascript проверить правильность заполнения полей формы \n В поле паспорт могут вводится только две буквы, в поле номер паспорта – только 7 цифр, номер бланка ответа – 7 цифр, предмет предполагает выбор языка(белорусский или русский), математика, физика. Код на картинке -6 цифр. При не заполнении какого либо поля должна выводится соотвествующая подсказка.
+    </p>
+    <form>
+        <table>
+            <tr>
+                <td>
+                    <label for="pass1">Passport Id</label>
+                </td>
+                <td>
+                    <input type="text" name="pass1" id="pass1" placeholder="Enter passport ID" max=2 min=2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="pass2">Passport number</label>
+                </td>
+                <td>
+                    <input type="text" name="pass2" id="pass2" placeholder="Enter passport number" max=7 min=7>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="blank"> Number blank </label>
+                </td>
+                <td>
+                    <input type="text" name="blank" id="blank" placeholder="Enter number blank">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="lang">Language</label>
+                </td>
+                <td>
+                    <select name="lang" id="lang">
+                        <option></option>
+                        <option value=1>Russian language</option>
+                        <option value=2>Belorussian language</option>
+                        <option value=3>Mathematics</option>
+                        <option value=4>Physics</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <p>
+            <input type="button" id="btn" onclick="validate(this.form)" value="Submit">
+        </p>
+    </form>
+
+</body>
+
+</html>

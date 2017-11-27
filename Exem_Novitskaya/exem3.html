@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exem Novitskaya</title>
+    <script src="jquery-3.2.1.min.js"></script>
+
+</head>
+
+<body>
+    <h3>Task 3</h3>
+    <p>Дан файл str.js, в котором описана строка в формате JSON. На основе данных этой строки создать HTML документ с соответствующей структурой и значениями.</p>
+    
+    <div id="task3"></div>
+
+    <script>
+
+        function addAttributes( $node, attributes ) {
+
+            console.log($node);
+
+            for ( var attrName in attributes ) {
+
+                var attrValue = attributes[attrName];
+
+                if( 'innerhtml' === attrName.toLocaleLowerCase() ) {
+                    $node.text( attrValue );
+                } else {
+                    $node.attr( attrName, attrValue );
+                }
+            }
+
+        }
+
+        function newNode( name, attributes ) {
+            var $node =  $('<' + name + '>');
+            addAttributes( $node, attributes );
+            return $node;
+        }
+
+        $(document).ready(function () {
+            var str = '{"h1":{"style":"color:red;","innerHTML":"Экзамен по JavaScript"},"h2":{"innerHTML":"Условие задачи","style":"text-align: center"},"div":{"innerHTML":" Дан файл str.js, в котором описана строка в формате JSON. На основе данных этой строки создать HTML документ с соответствующей структурой и значениями"},"img":{"src":"finita_la.jpg"},"p":{"innerHTML":"finita la commedia","style":"text-align: center"}}';
+
+            var $result = $('#task3');
+
+            var objectTemp = JSON.parse(str);
+            console.dir(objectTemp);
+
+            for ( var tag in objectTemp ) {
+                var $node = newNode( tag, objectTemp[tag] );
+                $result.append( $node );
+            }
+
+// for(var i;i>objectTemp.length;i++){
+//                 $("body").append( newNode( i ) );
+//             }
+
+//             function createNode(nodeName, attributes = {}, text = '') {
+//                 return $('<' + nodeName + '>', attributes).text(text);
+//             }
+
+//for (var key in objectTemp) 
+
+            // var str = '{"h1":{"style":"color:red;","innerHTML":"Экзамен по JavaScript"},"h2":{"innerHTML":"Условие задачи","style":"text-align: center"},"div":{"innerHTML":" Дан файл str.js, в котором описана строка в формате JSON. На основе данных этой строки создать HTML документ с соответствующей структурой и значениями" },"img":{"src=":"finita_la.jpeg"},"p":{"innerHTML":"finita la commedia","style":"text-align: center"}}';
+            // var str1 = JSON.parse(str);
+            // console.dir(str1);
+            // for (var key in str1) {
+            //     $("#task3").append(createNode(key, str1[key]));
+            // }
+
+            // function createNode(nodeName, attributes = {}, text = '') {
+
+            //     return $('<' + nodeName + '>', attributes).text(text);
+            // }
+
+            //   $("body").append(str1);
+
+            // JSON.parse(str, function (key, value) {
+            //     var str1 = "<" + key + ">" + value + "</" + key + ">";
+            //     if (key == "img") {
+            //         str1 = "<" + key + " " + value + ">";
+            //     }
+            //     console.log(str1);
+            //     $("body").append(str1);
+            // });
+        });
+    </script>
+</body>
+
+</html>

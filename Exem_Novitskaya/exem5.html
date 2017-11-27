@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Styleapp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exem Novitskaya</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+
+</head>
+
+<body ng-controller="StyleController">
+    <h3>Task 5</h3>
+    <h4>Горизонтальные линии</h4>
+    <p>Выберите значения параметров, которые требуется изменить и нажмите кнопку
+        <strong>Выполнить</strong>
+    </p>
+    <hr id="hr1">
+    <!-- <hr color="{{color}}" size="{{sizeHR}}px" width="{{widthHR}}px" align-content="left"> -->
+    <table>
+        <tr>
+            <td>
+                <input type="radio" name="aling" id="aling" checked>LEFT
+                <br>
+                <input type="radio" name="aling" id="aling">CENTER
+                <br>
+                <input type="radio" name="aling" id="aling">RIGHT
+                <br>
+                <input type="number" name="" id="sizeHr" ng-model="sizeHR">
+                <label for="sizeHr">Толщина линии</label>
+                <br>
+                <input type="number" name="" id="widthHr" ng-model="widthHR">
+                <label for="widthHr">Длина линии</label>
+            </td>
+            <td>Цвет линии
+                <br>
+                <select name="" id="colorHR" ng-model="color">
+                    <option value="{{x.id}}" ng-disabled="x.color==color1" ng-repeat="x in DBcolors">{{x.color}}</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <button id="btn1" ng-click="verify();">Выполнить </button>
+    <button id="btn2">Обновить</button>
+    <!-- <script>
+        //создание плагина
+
+        //безымянная функция которая выполняется один раз
+        // (function ($) {
+        //     //плагин для задания цвета абзаца
+        //     //цвет по умолчанию - красный
+        //     var defaults = {
+        //         bgColor: 'red',
+        //         fontColor: 'white',
+        //         fontSize: '14px'
+        //     };
+        //     // актуальные настройки, глобальные
+        //     var options;
+        //     $.fn.namePlagin = function (params) {
+        //         options = $.extend({}, defaults, options, params);
+        //         //действие
+        //         $(this).click(function () {
+        //             $(this).css({
+        //                 "background-color": options.bgColor,
+        //                 "color": options.fontColor,
+        //                 "font-size": options.fontSize
+        //             });
+        //         });
+        //         console.log(this);
+        //         return this;
+        //     };
+        // })(jQuery);
+
+        $(document).ready(function () {
+            //применение плагина по умолчанию
+            // $("p").namePlagin();
+            // $("p").namePlagin({bgColor:"brown"});
+            $("p").namePlagin({
+                bgColor: "blue",
+                fontColor: "yellow",
+                fontSize: "20px"
+            });
+
+
+
+        });
+    </script> -->
+</body>
+
+</html>

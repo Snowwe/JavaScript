@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exem Novitskaya</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script>
+        document.write('<h3>Task 1</h3><textarea id="d1"> Написать программу, которая выполняла бы следующие действия и выводила результат в поле формы при нажатии на кнопку «Вычислить».\n1.1.	Даны три числа a, b, c. Найти значение выражения ax+by-c, \nx – наибольшее среди чисел a, b,\ny – наименьшее среди чисел a, c.</textarea><br><br>');
+        document.write('<label for="input1">Enter namber a</label>  <input type="number"  name="input1" id="a" required><br><br>');
+        document.write('<label for="input2">Enter namber b</label>  <input type="number"  name="input2" id="b" required><br><br>');
+        document.write('<label for="input3">Enter namber c</label>  <input type="number"  name="input3" id="c" required><br><br>');
+        document.write('<label for="input4">The result of the program execution</label>  <input type="number"  name="input4" id="rez"><br><br>');
+        document.write('<button  name="calc" onclick="f1()">Calculate</button><br><br>');
+
+
+        function f1() {
+            var a, b, c, rez, x, y;
+            a = document.getElementById("a").value;
+            b = document.getElementById("b").value;
+            c = document.getElementById("c").value;
+            x = Math.max(a, b);
+            y = Math.min(a, c);
+            rez = a * x + Number(b * y) - c;
+
+            document.getElementById("rez").value = rez;
+
+        }
+        //2	
+        function parseStr() {
+            var str = document.getElementById("task2").value;
+            var world = str.split(' ');
+            world = world.sort();
+            document.getElementById("task2rez").value = world;
+
+        }
+    </script>
+    <h3>Task 2</h3>
+    <p>С помощью языка javascript необходимо написать программу, которая считывает из формы текстовую строку неопределенной длины. В программе предусмотреть разбор строки по словам. Слова, отсортированные в алфавитном порядке, необходимо вывести в текстовую область формы. </p>
+    <textarea name="task2" id="task2"></textarea>
+    <br>
+    <button name="parseS" onclick="parseStr()">Parse</button>
+    <br>
+    <textarea name="task2rez" id="task2rez" ></textarea>
+
+</body>
+
+</html>
