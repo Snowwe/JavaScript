@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Функции</title>
+	<script>
+	function minus(a,b){
+			return a-b;
+		}
+	</script>
+</head>
+<body>
+<p style="color: darkorange">Hello</p>
+	<script>
+		//описание функции, не важно где написана
+		function sum(a,b){
+			return a+b;
+		}
+		console.log(sum(1,2));
+		var a=10,b=20;
+		console.log(sum(a,b));
+		console.log(minus(3,2)+sum(a,b));
+		
+		//функция без аргументов
+		function sumAll(){
+			var sum=0;
+			//обьект arguments создается при вызове функции
+			for (var i=0;i<arguments.length;++i)
+				sum+=arguments[i];
+			return sum;
+		}
+		console.log(sumAll(1,2));
+		console.log(sumAll(a,b,1,2));
+		
+		//глобальные и локальные переменные
+		var userName="Nick"; //глобальная переменная
+		
+		function printUseName1(){
+			console.log(userName);
+		}
+		function printUseName2(){
+			var userName="Alex"; //локальная переменная
+			console.log(userName);
+		}
+		function printUseName3(){
+			userName="Max"; //изменение глобальной переменной
+			console.log(userName);
+		}
+		
+		printUseName1();
+		printUseName2();
+		printUseName3();
+		
+		//значения по умолчанию
+		function printString(str,size,color){
+			document.write("<p style='color:"+color+"; font-size:"+size+"px;'>"+str+"</p>")
+		}
+		printString("Good morning, world!");
+		printString("I'll be back...",16,"green");
+		printString("Hi!!!",22);
+				
+		//замыкание функции
+		//создаём функцию счетчик
+		console.log("функция счетчик");
+		var count=0;
+		function counter(){
+			return ++count;
+		}
+		
+		console.log(counter());
+		console.log(counter());
+		count=10;
+		console.log(counter());
+		
+		//модификация
+		console.log("модификация - выводится одно и тоже значение");
+		function counter2(){
+			var count=0;
+			return ++count;
+		}
+		console.log(counter2());
+		console.log(counter2());
+		
+		//модификация
+		console.log("модификация - ");
+		function counter3(){
+			var count=0;
+			function innerFunction(){
+				return ++count;
+			}
+			return innerFunction;
+		}
+		
+		var counter4=counter3();//присвоили функцию
+		console.log(counter4);
+		console.log(counter4());//поэтому вызываем переменную как функцию
+		console.log(counter4());
+		
+		var counter5=counter3();//присвоили функцию
+		console.log(counter5());
+		console.log(counter5());//поэтому вызываем переменную как функцию
+		console.log(counter5());
+	</script>
+</body>
+</html>

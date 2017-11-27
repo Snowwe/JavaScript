@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Objects</title>
+</head>
+<body>
+<p id="test"></p>
+<button onclick="change();">Click me</button>
+<script>
+	function change(){
+	var elem=document.getElementById("test");
+		elem.style.color="blue";
+		elem.style.fontSize="30px";
+		elem.innerHTML="Simple text";
+	}
+	</script>
+	<script>
+		var user={
+			nickName:"admin",
+			password:"12345",
+			info:function(){				console.log(this.nickName,this.password);
+			}
+		}
+		user.info();
+		console.log(user.nickName+":"+user.password);
+		
+		//вывод инфо в консоль в виде обьекта
+		console.dir(user);
+		//вызов метода Object.toString
+		console.log(user);
+		
+		//добавление свойств
+		user.email="admin@gmail.com";
+		user.passport=function(){
+		console.log(user.email);
+		}
+		
+		//вывод инфо в консоль в виде обьекта
+		console.dir(user);
+		user.passport();
+		
+		var nick={
+			nickName:"nick",
+			password:"qwerty",
+			info:function(){				console.log(this.nickName,this.password);
+			}
+		}
+		nick.info();
+		
+		//определение конструктора для создания обьектов
+		function UserClass(nickName,password){
+			this.nickName=nickName;
+			this.password=password;
+			this.info=function(){
+				console.log(this.nickName,this.password);
+			}
+		}
+		//создание обьектов на основе конструктора
+		var alex=new UserClass("alex","aaaa");
+		var max=new UserClass("max","mmm");
+		console.log(alex);
+		max.info();
+		
+		var vasya=new Object();
+		vasya.nickName="Vasya";
+		console.log(vasya);
+		console.dir(vasya);
+		
+		//вывод в консоль обьекта document
+		console.dir(document);
+		
+		//наследование обьекта
+		var point={
+			x:10,
+			y:20
+		}
+		var rectangle={
+			width:100,
+			height:50,
+			__proto__:point
+		}
+		console.log(rectangle.width,rectangle.height);
+		//rectangle.__proto__=point;
+		console.dir(rectangle);
+		console.log(rectangle.x,rectangle.y);
+		
+	</script>
+</body>
+</html>
