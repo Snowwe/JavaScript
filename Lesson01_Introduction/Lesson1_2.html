@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Основные конструкции</title>
+</head>
+<body>
+   <script>
+    //оператор if
+    //нахождение максимального среди 3 чисел   
+    var a,b,c;
+    a=Number(prompt("Enter number"));
+    b=Number(prompt("Enter number"));
+    c=Number(prompt("Enter number"));
+       
+    var max;
+    if (a>b&&a>c)
+        max=a;
+       else if(b>c)
+           max=b;
+       else
+           max=c;
+       
+       console.log("max(",a,",",b,",",c,")=",max);
+    
+       //тернарная операция
+       
+       console.log((a>b)?a:b);
+       
+       //switch
+       
+       var mark=3;
+       switch(mark){
+           case 1:
+           case 2:
+           case 3:
+           case 4:console.log("Bad mark");break;       
+           case 5:
+           case 6:
+           case 7:console.log("Good mark");break;
+           default:
+               console.log("Excellent mark");
+               
+        }
+       
+       //циклы
+       for (let i=0;i<10;++i)
+           document.write("*");
+       
+       document.write("<p>");
+       var j=0;
+       while(j<9){
+           document.write("-");
+           ++j;
+       }
+       
+       document.write("<p>");
+       j=10;
+       do
+       {
+        document.write("+");
+        --j;
+       }
+       while(j>0);
+    
+    </script>
+   
+    
+</body>
+</html>
